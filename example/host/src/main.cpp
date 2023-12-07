@@ -19,12 +19,13 @@ int main(int argc, char **argv) {
 
     proc_address_func procAddressFunc = reinterpret_cast<proc_address_func>(&GetProcAddressFromHost);
 
+    //Rename file name to whatever you called your plugin
     Plugin plugin("./libtestplugin.so", procAddressFunc);
 
     if(!plugin.Load())
         return 1;
 
-    if(plugin.Unload())
+    if(!plugin.Unload())
         return 1;
 
     return 0;
