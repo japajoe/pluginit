@@ -1,7 +1,6 @@
 #ifndef PLUGININIT_H
 #define PLUGININIT_H
 
-/* PLI_DLL is not officially supported. You're on your own if you want to use this. */
 #if defined(PLI_DLL)
     #if defined(_WIN32)
         #define PLI_DLL_IMPORT  __declspec(dllimport)
