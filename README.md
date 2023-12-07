@@ -55,3 +55,6 @@ PLUGIN_EXPORT void plugin_entry_point(void) {
 }
 #endif
 ```
+
+# Building
+To make a build you shouldn't have to link anything on Windows. On Linux you only need to link with `-ldl`. Building for Mac is currently not supported but I'm happy to accept pull requests for this.
