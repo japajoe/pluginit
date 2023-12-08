@@ -9,7 +9,7 @@ Plugin::Plugin(const std::string &filePath, proc_address_func procAddressFunc) {
 }
 
 bool Plugin::Load() {
-    if(!handle)
+    if(handle)
         return false;
 
     handle = pli_plugin_load(filePath.c_str());
