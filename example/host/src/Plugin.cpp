@@ -19,17 +19,9 @@ bool Plugin::Load() {
         return false;
 
     void *pOnLoad = FindSymbol("OnPluginLoad");
-
-    if(!pOnLoad) {
-        pli_plugin_unload(handle);
-        onLoad = nullptr;
-        onUnload = nullptr;
-        return false;
-    }
-    
     void *pOnUnload = FindSymbol("OnPluginUnload");
 
-    if(!pOnUnload) {
+    if(!pOnLoad || !pOnUnload) {
         pli_plugin_unload(handle);
         onLoad = nullptr;
         onUnload = nullptr;
@@ -48,10 +40,8 @@ bool Plugin::Unload() {
     if(!handle)
         return false;
 
-    if(!onUnload) 
-        return false;
-
-    onUnload();
+    if(onUnload) 
+        onUnload();
 
     pli_plugin_unload(handle);
 
