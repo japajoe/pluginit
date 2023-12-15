@@ -2,6 +2,7 @@
 #include "pluginit.h"
 
 Plugin::Plugin(const std::string &filePath, proc_address_func procAddressFunc) {
+    this->handle = nullptr;
     this->filePath = filePath;
     this->procAddressFunc = procAddressFunc;
     this->onLoad = nullptr;
