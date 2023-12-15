@@ -9,7 +9,7 @@
 #endif
 
 #if defined (PLATFORM_WINDOWS)
-    #include <Windows.h>
+    #include <windows.h>
 #endif
 #if defined (PLATFORM_LINUX)
     #include <dlfcn.h>
@@ -72,7 +72,7 @@ void *pli_plugin_get_symbol(void *pluginHandle, const char *symbolName) {
     void *s = NULL;
 
 #if defined (PLATFORM_WINDOWS)
-    s = GetProcAddress((HINSTANCE)pluginHandle, symbolName);
+    s = (void*)GetProcAddress((HINSTANCE)pluginHandle, symbolName);
     if(s == NULL) {
         printf("Error: undefined symbol: %s\n", symbolName);
     }
