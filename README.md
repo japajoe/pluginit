@@ -6,7 +6,7 @@ To dynamically load a plugin you'll need a host application and a shared library
 ```c
 #include "pluginit.h"
 
-typedef void (entry_point_ptr)(void);
+typedef void (*entry_point_ptr)(void);
 
 int main(int argc, char **argv) {
     //Loads a plugin by given filepath
