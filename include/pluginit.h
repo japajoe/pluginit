@@ -43,6 +43,8 @@ extern "C" {
 PLI_API void *pli_plugin_load(const char *filePath);
 PLI_API void pli_plugin_unload(void *pluginHandle);
 PLI_API void *pli_plugin_get_symbol(void *pluginHandle, const char *symbolName);
+PLI_API char *pli_find_library_path(const char *libraryName);
+PLI_API void pli_free_library_path(char *libraryPath);
 
 #if defined(__cplusplus)
 }
