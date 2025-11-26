@@ -45,9 +45,11 @@ PLI_API void pli_plugin_unload(void *pluginHandle);
 PLI_API void *pli_plugin_get_symbol(void *pluginHandle, const char *symbolName);
 PLI_API char *pli_find_library_path(const char *libraryName);
 PLI_API void pli_free_library_path(char *libraryPath);
+PLI_API void *pli_find_and_load_plugin(const char *libraryName);
 
 #if defined(__cplusplus)
 }
 #endif
 
 #endif
+

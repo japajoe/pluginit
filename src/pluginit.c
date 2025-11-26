@@ -1,5 +1,7 @@
 #include "pluginit.h"
 #include "stdio.h"
+#include "stdlib.h"
+#include "string.h"
 
 #if defined(_WIN32)
     #define PLATFORM_WINDOWS
@@ -94,8 +96,8 @@ void *pli_plugin_get_symbol(void *pluginHandle, const char *symbolName) {
 char *pli_find_library_path(const char *libraryName) {
     static char result[4096]; // Static buffer to hold result
 #ifdef PLATFORM_WINDOWS
-    DWORD result = SearchPath(NULL, libraryName, NULL, MAX_PATH, result, NULL);
-    if (result == 0) {
+    DWORD res = SearchPath(NULL, libraryName, NULL, MAX_PATH, result, NULL);
+    if (res == 0) {
         // No match found, handle the error
         return NULL;
     }
@@ -145,3 +147,13 @@ void pli_free_library_path(char *libraryPath) {
     if(libraryPath)
         free(libraryPath);
 }
+
+void *pli_find_and_load_plugin(const char *libraryName) {
+    char *filePath = pli_find_library_path(libraryName);
+    if(filePath == NULL)
+        return NULL;
+    void *pLibrary = pli_plugin_load(filePath);
+    pli_free_library_path(filePath);
+    return pLibrary;
+}
+
