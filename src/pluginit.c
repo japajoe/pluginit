@@ -27,7 +27,7 @@ static pli_bool pli_file_exists(const char *filePath) {
 }
 
 void *pli_plugin_load(const char *filePath) {
-    if(!pli_file_exists) {
+    if(!pli_file_exists(filePath)) {
         printf("File not found: %s\n", filePath);
         return NULL;
     }
